@@ -1,16 +1,11 @@
 package com.example.android.detroittourguide;
 
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -38,24 +33,34 @@ public class LandmarksFragment extends Fragment {
         words.add(new Word("Motown Records",
                 "2648 W Grand Blvd, Detroit,"
                 + " MI, 48208", "Legendary record label",
-                R.drawable.ham_mushroom));
+                R.drawable.motownmuseum, "https://www.motownmuseum.org/"));
+        words.add(new Word("Spirit of Detroit Statue",
+                "2 Woodward Ave, Detroit, MI 48226",
+                "City monument that represents the city of Detroit",
+                R.drawable.spiritmain,
+                "https://detroithistorical.org/learn/encyclopedia-of-detroit/spirit-detroit"));
+        words.add(new Word("Guardian Building",
+                "500 Griswold St, Detroit, MI 48226",
+                "Timeless depiction of creativity and accomplishment",
+                R.drawable.guardianbuilding,
+                "https://www.historicdetroit.org/building/guardian-building/"));
+        words.add(new Word("Renaissance Center",
+                "E Jefferson Ave & Beaubien St, Detroit, MI 48243",
+                "GM headquarters, home to dining, shopping, and the Marriot hotel",
+                R.drawable.rencen, "https://www.gmrencen.com/"));
+        words.add(new Word("Greektown",
+                "Monroe Ave & Beaubien St, Detroit, MI 48226",
+                "Greek food and gambling! What's not to love???",
+                R.drawable.greektown,
+                "https://www.greektowndetroit.org"));
+
+
 
         WordAdapter adapter = new WordAdapter(getActivity(), words);
         ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Class<? extends Activity> activityToStart = null;
 
-                String url = "http://www.google.com";
-                Intent in = new Intent(Intent.ACTION_VIEW);
-                in.setData(Uri.parse(url));
-                startActivity(in);
-
-                }
-            });
 
 
         return rootView;

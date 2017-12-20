@@ -11,14 +11,16 @@ public class Word {
     private String mDescription;
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
+    private String mUrl;
 
     public Word(String item_name, String location_address, String description,
-                int imageResourceId) {
+                int imageResourceId, String url) {
 
         mName = item_name;
         mAddress = location_address;
         mDescription = description;
         mImageResourceId = imageResourceId;
+        mUrl = url;
     }
 
     public String getName() {
@@ -37,7 +39,7 @@ public class Word {
         return mImageResourceId;
     }
 
-
+    public String getUrl() {return mUrl;}
     }
 
 

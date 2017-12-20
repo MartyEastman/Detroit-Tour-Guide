@@ -1,8 +1,11 @@
 package com.example.android.detroittourguide;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -30,7 +33,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
                     false);
         }
 
-        Word currentWord = getItem(position);
+        final Word currentWord = getItem(position);
 
         //Get image
         ImageView imageView = listItemView.findViewById(R.id.image);
@@ -49,6 +52,14 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
 
 
+        listItemView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = currentWord.getUrl();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                getContext().startActivity(intent);
+            }
+        });
 
         return listItemView;
     }
